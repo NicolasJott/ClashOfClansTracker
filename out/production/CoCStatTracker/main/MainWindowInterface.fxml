@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #14242B;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.MainWindowController">
+    <children>
+        <Text fill="WHITE" layoutX="223.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Your PlayerTag (Without the #)">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Text>
+        <TextField fx:id="playerTagTextField" layoutX="223.0" layoutY="188.0" />
+        <Button layoutX="270.0" layoutY="243.0" mnemonicParsing="false" onAction="#submitPlayerTag" text="Submit" />
+    </children>
+</AnchorPane>
