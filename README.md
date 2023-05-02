@@ -21,5 +21,9 @@ public class Tokens {
 It will prompt you to enter a Clash of Clans player tag.
 Below are some player tags that you can use if you don't have your own.
 
-
+<pre>
+#QRRVVP99
+#YROGPOC2G
+#288V8PV9R
+</pre>
 
