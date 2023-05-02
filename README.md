@@ -27,3 +27,4 @@ Below are some player tags that you can use if you don't have your own.
 #288V8PV9R
 </pre>
 
+Required Packages are JavaFX and org.json
