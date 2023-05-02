@@ -1,14 +1,154 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="main.ClanController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="800.0" prefWidth="1100.0" style="-fx-background-color: #14242B;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ClanController">
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="216.0" prefWidth="1100.0" spacing="10.0">
+         <children>
+            <ImageView fx:id="clanImage" fitHeight="155.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true" />
+            <VBox prefHeight="155.0" prefWidth="374.0">
+               <children>
+                  <Label fx:id="clanName" style="-fx-font-weight: 700; -fx-font-size: 24px;" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="clanTag" layoutX="10.0" layoutY="10.0" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="clanDescription" alignment="TOP_LEFT" layoutX="10.0" layoutY="28.0" prefHeight="120.0" prefWidth="317.0" text="Label" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets right="250.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox prefHeight="155.0" prefWidth="360.0">
+               <children>
+                  <HBox prefHeight="27.0" prefWidth="241.0">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="117.0" text="Clan War League" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets right="50.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="clanLeague" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="26.0" prefWidth="166.0" text="Label" textFill="WHITE" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="10.0" prefHeight="26.0" prefWidth="272.0">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="117.0" text="Total Points:" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="clanPoints" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="74.0" text="Label" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="clanVersusPoints" alignment="CENTER_RIGHT" layoutX="147.0" layoutY="10.0" prefHeight="25.0" prefWidth="97.0" text="Label" textFill="WHITE" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="37.0" prefHeight="27.0" prefWidth="241.0">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="117.0" text="Clan Location:" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets right="50.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="clanLocation" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="26.0" prefWidth="166.0" text="Label" textFill="WHITE" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="64.0" prefHeight="27.0" prefWidth="241.0">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="117.0" text="Chat Language" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets right="50.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="clanLanguage" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="26.0" prefWidth="166.0" text="Label" textFill="WHITE" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="26.0" prefWidth="272.0">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="117.0" text="Required Trophies:" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="requiredTrophies" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="74.0" text="Label" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="requiredVersusTrophies" alignment="CENTER_RIGHT" layoutX="147.0" layoutY="10.0" prefHeight="25.0" prefWidth="102.0" text="Label" textFill="WHITE" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="63.0" prefHeight="27.0" prefWidth="241.0">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="165.0" text="Required Town Hall level:" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets right="50.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="requiredTownhallLevel" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="26.0" prefWidth="105.0" text="Label" textFill="WHITE" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="2.0" layoutY="195.0" prefHeight="100.0" prefWidth="1100.0">
+         <children>
+            <Label fx:id="numMembers" text="Label" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <ScrollPane hbarPolicy="NEVER" layoutX="2.0" layoutY="295.0" prefHeight="507.0" prefWidth="1100.0" style="-fx-background-color: #14242B;" stylesheets="@style.css">
+         <content>
+            <VBox fx:id="clanMembers" alignment="TOP_CENTER" prefHeight="505.0" prefWidth="1098.0" spacing="10.0" style="-fx-background-color: #14242B;" />
+         </content>
+      </ScrollPane>
+   </children>
 </AnchorPane>

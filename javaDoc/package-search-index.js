@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"coc.Clan"},{"l":"coc.Events"},{"l":"coc.exceptions"},{"l":"coc.HttpRequest"},{"l":"coc.Player"},{"l":"coc.Tokens"},{"l":"main"}];updateSearchResults();

@@ -159,8 +159,19 @@ public class Player {
      * Reads Json file to return the Clash player's clan role
      */
     public String getRole() throws JSONException {
-        return (String) PLAYER_INFO.get("role");
-
+        String role = (String) PLAYER_INFO.get("role");
+        switch (role) {
+            case "coLeader":
+                return "Co-leader";
+            case "admin":
+                return "Elder";
+            case "member":
+                return "Member";
+            case "leader":
+                return "Leader";
+            default:
+                return "";
+        }
     }
 
     /*

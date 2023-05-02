@@ -5,6 +5,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import coc.HttpRequest.ServerConnection;
+
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
@@ -49,12 +51,43 @@ public class Clan {
         return (String) CLAN_INFO.getJSONObject("location").get("countryCode");
     }
 
+    public String getClanWarLeague() throws JSONException {
+        return (String) CLAN_INFO.getJSONObject("warLeague").get("name");
+    }
+
+    public String getClanLanguage() throws JSONException {
+        int id = getLocationID();
+        switch (id) {
+            case 32000249 -> {
+                return "English" ;
+            }
+
+        }
+        return "None";
+    }
+
     public Integer getRequiredVersusTrophies() throws JSONException {
-        return (Integer) CLAN_INFO.get("requiredVersusTrophies");
+        return CLAN_INFO.has("requiredVersusTrophies") ? (Integer) CLAN_INFO.get("requiredVersusTrophies") : 0 ;
+    }
+
+    public Integer getRequiredTrophies() throws JSONException {
+        return CLAN_INFO.has("requiredTrophies") ? (Integer) CLAN_INFO.get("requiredTrophies") : 0 ;
+    }
+
+    public Integer getClanPoints() throws JSONException {
+        return (Integer) CLAN_INFO.get("clanPoints");
+    }
+
+    public Integer getClanVersusPoints() throws JSONException {
+        return (Integer) CLAN_INFO.get("clanVersusPoints");
     }
 
     public Integer getRequiredTownhallLevel() throws JSONException {
         return (Integer) CLAN_INFO.get("requiredTownhallLevel");
+    }
+
+    public Integer getNumberMembers() throws JSONException {
+        return (Integer) CLAN_INFO.get("members");
     }
 
     public Integer getCapitalHallLevel() throws JSONException {
@@ -130,6 +163,10 @@ public class Clan {
             JSONObject temp = new JSONObject();
             temp.put("name", CLAN_INFO.getJSONArray("memberList").getJSONObject(i).get("name").toString());
             temp.put("tag", CLAN_INFO.getJSONArray("memberList").getJSONObject(i).get("tag").toString());
+            temp.put("donations", CLAN_INFO.getJSONArray("memberList").getJSONObject(i).get("donations").toString());
+            temp.put("donationsReceived", CLAN_INFO.getJSONArray("memberList").getJSONObject(i).get("donationsReceived").toString());
+            temp.put("trophies", CLAN_INFO.getJSONArray("memberList").getJSONObject(i).get("trophies").toString());
+            temp.put("leagueIcon", CLAN_INFO.getJSONArray("memberList").getJSONObject(i).getJSONObject("league").getJSONObject("iconUrls").get("small").toString());
             members.put(temp);
         }
 

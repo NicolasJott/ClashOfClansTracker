@@ -70,7 +70,8 @@ public class PlayerController {
 
     private Player player;
 
-    public PlayerController() {
+    public PlayerController() throws IOException {
+
     }
 
     public void setPlayer(Player player) throws IOException {
@@ -108,12 +109,13 @@ public class PlayerController {
                 nodes[i] = loader.load();
                 JSONObject achievementJson = achievementsJsonArray.getJSONObject(i); // get the corresponding achievement JSON object for this item
                 ItemController controller = loader.getController(); // get the controller for the FXML file
-                controller.setAchievementInfo((achievementJson).getString("name"), achievementJson.getString("info"), achievementJson.getString("completionInfo"), achievementJson.getInt("stars")); // call a method in the controller to set the achievement information
+                controller.setAchievementInfo(achievementJson.getString("name"), achievementJson.getString("info"), achievementJson.getString("completionInfo"), achievementJson.getInt("stars")); // call a method in the controller to set the achievement information
                 pnItems.getChildren().add(nodes[i]);
             } catch (IOException | JSONException e) {
                 e.printStackTrace();
             }
         }
+
 
 
 
@@ -125,23 +127,22 @@ public class PlayerController {
     private void player(MouseEvent event) throws IOException {
         bp.setCenter(ap);
     }
+
+
+
+    private Parent clanView;
     @FXML
     private void clan(MouseEvent event) throws IOException {
-        loadPage("clan");
+        if (clanView == null) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("clan.fxml"));
+            clanView = loader.load();
+            ClanController clanController = loader.getController();
+            clanController.setClan(player);
+        }
 
-    }
-    @FXML
-    private void events(MouseEvent event) throws IOException {
-        loadPage("events");
+        // Show the "clan" view
+        bp.setCenter(clanView);
 
-    }
-
-    private void loadPage(String page) throws IOException {
-        Parent root = null;
-
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(page + ".fxml")));
-
-        bp.setCenter(root);
     }
 
     public static Image downloadImage(String urlString) throws IOException {

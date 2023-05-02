@@ -22,7 +22,7 @@ public class MainWindowController {
 
     @FXML
     private void submitPlayerTag() {
-        String playerTag = playerTagTextField.getText();
+        String playerTag = playerTagTextField.getText().replace("#","");
         System.out.println("Player tag submitted: " + playerTag);
         Player player = getPlayer(playerTag);
         try {
@@ -41,8 +41,7 @@ public class MainWindowController {
     @FXML
     private Player getPlayer(String playerTag) {
         try {
-            String PLAYER_TAG = "QUROQGQRG";
-            //String PLAYER_TAG = playerTag ;
+            String PLAYER_TAG = playerTag ;
             String API_KEY = Tokens.getAPI_KEY();
             return new Player(API_KEY, PLAYER_TAG);
         } catch (IOException e) {
