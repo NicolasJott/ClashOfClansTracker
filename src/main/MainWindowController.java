@@ -41,7 +41,7 @@ public class MainWindowController {
     @FXML
     private Player getPlayer(String playerTag) {
         try {
-            String PLAYER_TAG = "QRRVVP99";
+            String PLAYER_TAG = "QUROQGQRG";
             //String PLAYER_TAG = playerTag ;
             String API_KEY = Tokens.getAPI_KEY();
             return new Player(API_KEY, PLAYER_TAG);

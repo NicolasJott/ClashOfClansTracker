@@ -3,13 +3,19 @@ import coc.Player.Player;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
@@ -59,6 +65,9 @@ public class PlayerController {
     @FXML
     private Text trophies;
 
+    @FXML
+    private VBox pnItems = null;
+
     private Player player;
 
     public PlayerController() {
@@ -81,29 +90,30 @@ public class PlayerController {
         Integer playerTownhallLevel = player.getTownHallLevel();
         townhallLevel.setText("Town Hall " + playerTownhallLevel);
 
-        File file = switch (playerTownhallLevel) {
-            case 1 -> new File("src/images/town_hall_level1.png");
-            case 2 -> new File("src/images/town_hall_level2.png");
-            case 3 -> new File("src/images/town_hall_level3.png");
-            case 4 -> new File("src/images/town_hall_level4.png");
-            case 5 -> new File("src/images/town_hall_level5.png");
-            case 6 -> new File("src/images/town_hall_level6.png");
-            case 7 -> new File("src/images/town_hall_level7.png");
-            case 8 -> new File("src/images/town_hall_level8.png");
-            case 9 -> new File("src/images/town_hall_level9.png");
-            case 10 -> new File("src/images/town_hall_level10.png");
-            case 11 -> new File("src/images/town_hall_level11.png");
-            case 12 -> new File("src/images/Town_Hall12.png");
-            case 13 -> new File("src/images/Town_Hall13.png");
-            case 14 -> new File("src/images/town_hall_level_14.png");
-            case 15 -> new File("src/images/town_hall_level_15.png");
-            default -> null;
-        };
+        String thImg = player.getTownHallImage();
 
-        Image image = new Image(file.toURI().toString());
+        Image image = new Image(thImg);
         townhallImage.setImage(image);
 
         trophies.setText("Trophies: " + player.getTrophies());
+
+        JSONArray achievementsJsonArray = player.getAchievements();
+
+        pnItems.setPadding(new Insets(10, 50, 50, 50));
+
+        Node[] nodes = new Node[achievementsJsonArray.length()]; // create a node array with the size of your JSON array
+        for (int i = 0; i < nodes.length; i++) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("item.fxml"));
+                nodes[i] = loader.load();
+                JSONObject achievementJson = achievementsJsonArray.getJSONObject(i); // get the corresponding achievement JSON object for this item
+                ItemController controller = loader.getController(); // get the controller for the FXML file
+                controller.setAchievementInfo((achievementJson).getString("name"), achievementJson.getString("info"), achievementJson.getString("completionInfo"), achievementJson.getInt("stars")); // call a method in the controller to set the achievement information
+                pnItems.getChildren().add(nodes[i]);
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+            }
+        }
 
 
 

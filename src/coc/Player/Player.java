@@ -5,6 +5,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import coc.HttpRequest.ServerConnection;
+
+import java.io.File;
 import java.io.IOException;
 
 public class Player {
@@ -45,6 +47,31 @@ public class Player {
     public int getTownHallLevel() throws JSONException {
         return PLAYER_INFO.has("townHallLevel") ? (int) PLAYER_INFO.get("townHallLevel") : 0;
 
+    }
+
+    public String getTownHallImage() throws JSONException {
+         int playerTownhallLevel = PLAYER_INFO.has("townHallLevel") ? (int) PLAYER_INFO.get("townHallLevel") : 0;
+
+            File file = switch (playerTownhallLevel) {
+                case 1 -> new File("src/images/town_hall_level1.png");
+                case 2 -> new File("src/images/town_hall_level2.png");
+                case 3 -> new File("src/images/town_hall_level3.png");
+                case 4 -> new File("src/images/town_hall_level4.png");
+                case 5 -> new File("src/images/town_hall_level5.png");
+                case 6 -> new File("src/images/town_hall_level6.png");
+                case 7 -> new File("src/images/town_hall_level7.png");
+                case 8 -> new File("src/images/town_hall_level8.png");
+                case 9 -> new File("src/images/town_hall_level9.png");
+                case 10 -> new File("src/images/town_hall_level10.png");
+                case 11 -> new File("src/images/town_hall_level11.png");
+                case 12 -> new File("src/images/Town_Hall12.png");
+                case 13 -> new File("src/images/Town_Hall13.png");
+                case 14 -> new File("src/images/town_hall_level_14.png");
+                case 15 -> new File("src/images/town_hall_level_15.png");
+                default -> null;
+            };
+        assert file != null;
+        return file.toURI().toString();
     }
 
     /*
