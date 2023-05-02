@@ -16,3 +16,10 @@ public class Tokens {
     }
 }
 ```
+
+## Run the application by running Main.
+It will prompt you to enter a Clash of Clans player tag.
+Below are some player tags that you can use if you don't have your own.
+
+
+
